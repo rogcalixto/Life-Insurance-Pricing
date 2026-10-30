@@ -53,16 +53,9 @@ price_insurance <- function(
     )
     
   } else if (product == "whole_life") {
-    
-    if (is.null(whole_life_Ax) ||
-        is.null(whole_life_annuity_due)) {
-      stop(
-        "Supply complete SOA whole life insurance and annuity-due APVs."
-      )
-    }
-    
-    benefit_apv <- whole_life_Ax
-    premium_apv <- whole_life_annuity_due
+
+    benefit_apv <- whole_life_insurance_apv(x, i, mortality)
+    premium_apv <- whole_life_annuity_due_apv(x, i, mortality, max_age = 100)
     
   } else {
     stop("Product must be 'term', 'endowment', or 'whole_life'.")
