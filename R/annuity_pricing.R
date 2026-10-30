@@ -58,25 +58,6 @@ whole_life_annuity_due_apv <- function(
   sum(pv_factors * survival)
 }
 
-#Reusable Annuity Pricing 
-
-whole_life_annuity_due_apv <- function(
-    x, annuity_due_apv_value) {
-  
-  if (length(x) != 1 || is.na(x) ||
-      x != floor(x)) {
-    stop("Age must be a whole number.")
-  }
-  
-  if (length(annuity_due_apv_value) != 1 ||
-      !is.finite(annuity_due_apv_value) ||
-      annuity_due_apv_value <= 0) {
-    stop("Whole life annuity-due APV must be positive.")
-  }
-  
-  annuity_due_apv_value
-}
-
 #Annuity Immediate APV 
 
 annuity_immediate_apv <- function(x, n, i, mortality) {
